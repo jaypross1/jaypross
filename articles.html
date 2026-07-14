@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Articles – Jay Ross – Wyze Product, LLC.</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+    --accentbg:#f0f9ff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+
+  /* PAGE HERO */
+  .page-hero { background: var(--ink); padding: 72px 40px; }
+  .page-hero-inner { max-width: 1040px; margin: 0 auto; }
+  .eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accentl); display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--accentl); }
+  .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.03em; color: var(--white); margin-bottom: 14px; }
+  .page-hero p { color: #94a3b8; font-size: 1rem; line-height: 1.7; max-width: 520px; }
+
+  /* FEATURED */
+  .featured { padding: 64px 40px 0; background: var(--bg); }
+  .section-inner { max-width: 1040px; margin: 0 auto; }
+  .s-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .s-eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--accent); }
+  .featured-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+    overflow: hidden; transition: box-shadow .2s;
+  }
+  .featured-card:hover { box-shadow: 0 12px 40px rgba(15,23,42,.1); }
+  .featured-img { height: 320px; overflow: hidden; background: var(--ink); }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+  .featured-card:hover .featured-img img { transform: scale(1.04); }
+  .featured-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+  .f-date { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin-bottom: 10px; }
+  .f-title { font-size: 1.4rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 14px; }
+  .f-excerpt { font-size: .9rem; color: var(--slate); line-height: 1.7; margin-bottom: 24px; }
+  .f-link { display: inline-flex; align-items: center; gap: 6px; font-size: .83rem; font-weight: 700; color: var(--accent); text-decoration: none; transition: gap .15s; }
+  .f-link:hover { gap: 10px; }
+
+  /* GRID */
+  .articles-section { padding: 48px 40px 80px; background: var(--bg); }
+  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,23,42,.1); }
+  .card-img { height: 180px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s; }
+  .card:hover .card-img img { transform: scale(1.04); }
+  .card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .card-date { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--muted); margin-bottom: 8px; }
+  .card-title { font-size: .97rem; color: var(--ink); line-height: 1.4; margin-bottom: 10px; font-weight: 600; }
+  .card-excerpt { font-size: .855rem; color: var(--slate); line-height: 1.65; flex: 1; }
+  .card-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 16px; font-size: .78rem; font-weight: 700; color: var(--accent); text-decoration: none; transition: gap .15s; }
+  .card-link:hover { gap: 9px; }
+
+  /* FOOTER */
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <ul>
+    <li><a href="about.html">About</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="mailto:rossjayp1@gmail.com" class="nav-cta">Work with Me</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow">Writing</div>
+    <h1>Articles</h1>
+    <p>Thoughts on product management, team building, strategy, and the business of building great software.</p>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="section-inner">
+    <div class="s-eyebrow">Latest</div>
+    <a href="articles/ai-takeover.html" class="featured-card" style="text-decoration:none">
+      <div class="featured-img">
+        <img src="https://jaypross1.github.io/jaypross/articles/ai_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+      </div>
+      <div class="featured-body">
+        <div class="f-date">Mar 20, 2024</div>
+        <div class="f-title">Foundation: Key PM Roles and Responsibilities Ripe for AI Takeover</div>
+        <div class="f-excerpt">If you have strategy, product, program, project, design, research, analyst, or analytics in your title and work on software products, your job is likely to change in the near future.</div>
+        <span class="f-link">Read article &#8594;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="articles-section">
+  <div class="section-inner">
+    <div class="articles-grid" id="grid"></div>
+  </div>
+</section>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="about.html">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+var ARTICLES = [
+  { title: "What is the Right Structure and Size of Your Product Org?", date: "Feb 13, 2024", excerpt: "How large should my product team be, and how should I organize it? Here is what I have learned after helping companies of all sizes get this right.", image: "https://jaypross1.github.io/jaypross/articles/org_hero.jpg", link: "articles/product-org-structure.html" },
+  { title: "Dealing with Survivor Guilt and Imposter Syndrome After a Layoff", date: "Feb 8, 2024", excerpt: "A lot has been written about those affected by layoffs, but not much about those who remain. This one is for you.", image: "https://jaypross1.github.io/jaypross/articles/survivor_hero.jpg", link: "articles/survivor-guilt.html" },
+  { title: "What Should My Product Team Do?", date: "Feb 1, 2024", excerpt: "Ask 15 people from 15 different companies what product management does and you will get at least 15 different answers.", image: "https://jaypross1.github.io/jaypross/articles/product_do_hero.jpg", link: "articles/what-should-product-do.html" },
+  { title: "Product Roadmap: What Should We Do Next?", date: "Jan 25, 2024", excerpt: "One of the most consistent questions I receive from PMs and executives alike: how do we decide what to build and bring to market next?", image: "https://jaypross1.github.io/jaypross/articles/roadmap_hero.jpg", link: "articles/product-roadmap.html" },
+  { title: "Dumb Ideas", date: "Feb 21, 2018", excerpt: "Having great ideas does not make a product manager. But that does not mean all ideas are dumb. Here is how to tell the difference.", image: "https://jaypross1.github.io/jaypross/articles/dumb_ideas_hero.jpg", link: "articles/dumb-ideas.html" },
+  { title: "The Grass Always Looks Greener", date: "Feb 6, 2017", excerpt: "On the modern approach to product management and why so many companies are still doing it the old way.", image: "https://jaypross1.github.io/jaypross/articles/grass_hero.jpg", link: "articles/grass-greener.html" },
+  { title: "Assuming the Best in People", date: "Sep 26, 2016", excerpt: "There are days when everybody seems lazy or incompetent. Here is why that assumption is usually wrong and what to do about it.", image: "https://jaypross1.github.io/jaypross/articles/assuming_hero.jpg", link: "articles/assuming-the-best.html" },
+  { title: "How Does Your Product Compare?", date: "Jul 8, 2016", excerpt: "The last question any PM wants their sales team to be asked by a customer. Here is how to handle it.", image: "https://jaypross1.github.io/jaypross/articles/compare_hero.jpg", link: "articles/product-compare.html" },
+  { title: "I Want to Be a Solutioneer!", date: "Jun 17, 2016", excerpt: "Solutioneering is generally a bad idea, especially on sales calls. So what is it, and when is it actually okay?", image: "https://jaypross1.github.io/jaypross/articles/solutioneer_hero.jpg", link: "articles/solutioneer.html" },
+  { title: "Focusing on the Problem, Not Potential Solutions", date: "Jun 10, 2016", excerpt: "One of the key mistakes a new PM makes when talking to a customer is to immediately jump from a brief description of the problem to a solution.", image: "https://jaypross1.github.io/jaypross/articles/focus_hero.jpg", link: "articles/focusing-on-the-problem.html" },
+  { title: "The Fallacy of Over-Communication", date: "Jun 3, 2016", excerpt: "You sent weekly updates, published the roadmap, held meetings. And yet: I did not know about this, you are not communicating enough.", image: "https://jaypross1.github.io/jaypross/articles/fallacy_hero.jpg", link: "articles/fallacy-of-over-communication.html" },
+  { title: "The Futility of Ideas", date: "May 27, 2016", excerpt: "Product ideas are simply the tip of the iceberg. Here is what it takes to go from an idea to a realized product.", image: "https://jaypross1.github.io/jaypross/articles/futility_hero.jpg", link: "articles/futility-of-ideas.html" },
+  { title: "Product Management Is More Than Ideas", date: "May 20, 2016", excerpt: "The conversation always starts the same way: I think I should be in product, I have a great idea. Here is why that is not enough.", image: "https://jaypross1.github.io/jaypross/articles/iceberg_hero.jpg", link: "articles/more-than-ideas.html" }
+];
+
+document.getElementById("grid").innerHTML = ARTICLES.map(function(a) {
+  return "<div class=\"card\"><div class=\"card-img\">" +
+    (a.image ? "<img src=\"" + a.image + "\" alt=\"\" onerror=\"this.parentElement.innerHTML='&#128196;'\">" : "&#128196;") +
+    "</div><div class=\"card-body\"><div class=\"card-date\">" + a.date + "</div><div class=\"card-title\">" + a.title + "</div><div class=\"card-excerpt\">" + a.excerpt + "</div>" +
+    "<a href=\"" + a.link + "\" class=\"card-link\">Read more &#8594;</a></div></div>";
+}).join("");
+
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

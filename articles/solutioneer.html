@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Want to Be a Solutioneer! – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/solutioneer_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Jun 17, 2016</span>
+    <span class="meta-tag">Product Management</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>I Want to Be a Solutioneer!</h1>
+
+  <div class="prose">
+
+    <p>It is a real thing, or so I am told. Companies actually have solutioneers. In looking at several job postings for solutioneers there is no standard job description. I mentioned in a couple of past articles that solutineering is generally a bad idea, especially on sales calls. So what is solutineering, and when it is a good idea?</p>
+
+    <p>First let's not confuse a solutioneer with an imagineer, I don't have the proper licensing rights to even consider writing about imagineers. For this article let's think of a solutioneer as somebody who proposes solving a problem with a product solution or feature, but is not a designer, engineer, or product manager. They will typically engage in solutineering with an existing or potential customer.</p>
+
+    <p>When dealing with software products you will come across unique problems that customers are having. Oftentimes the customer has an idea of how they might like to solve that problem. Additionally, a lot of people who work on software products (regardless of industry) tend to be problem solvers by nature. So, a lot of customer interactions start with either a description of a problem or a proposed solution (or feature request) and the entire group begins trying to solve that problem.</p>
+
+    <p>The meeting can easily become a brainstorming session with people throwing out ideas for how to solve the problem. Most of the time the solutions involve either product changes or new features. I explained in prior post how this is a bad thing, but is it ever a good thing?</p>
+
+    <p>Brainstorming like this can be productive, if you set everything up correctly. First you need to make sure that you have the correct people in the meeting. If we assume that this is a sales call with a potential or existing customer, then you would want an engineer, a designer, a user researcher, the product manager, and the sales person from your organization on the call. The engineer will ground the discussion in reality and ensure that the ideas are technically possible. The designer will help think through the entire problem and ensure it is fully considered in any solutions. The user researcher will help facilitate the meeting and drive the customer to better explain the problem and why a given solution may or may not work. Of course the product manager and sales person should be there to ensure alignment to the company mission/vision and/or scope of the engagement with the customer, as well as to facilitate any discussion about pricing or effort. If any one person cannot attend the meeting, it should be delayed.</p>
+
+    <p>From the customer side of things you would want the decision maker and a person who is dealing with the problem that is being discussed. You don't want a manager who has an idea of the problem. You really want somebody from the trenches that actually experiences the problem. You should consider getting people both up and downstream from this person to ensure that you are getting a full picture of the problem.</p>
+
+    <p>The context for brainstorming solutions is as important as the people that are present in the session. It is important that everybody understand that the brainstorming session is not an agreement to actually build anything. It is a mechanism to further understand the problem, and to get an idea of how the problem might be solved. It is also important to make sure that people focus on staying positive. I have mentioned before about how simply saying no can kill creativity. Make sure that people come to the session expecting to listen more than they talk and that before an idea is ruled out, it will be necessary to ensure that everybody is clear on what the idea is, and more importantly the intent of the idea.</p>
+
+    <hr>
+
+    <p>It is under these conditions that it is ok for everybody to be a solutioneer, at least for a few hours. So, set the context, gather the right people, be creative, and shoot for the moon.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

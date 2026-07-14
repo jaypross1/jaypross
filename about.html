@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – Jay Ross – Wyze Product, LLC.</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+    --accentbg:#f0f9ff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+
+  /* PAGE HERO */
+  .page-hero { background: var(--ink); padding: 72px 40px; }
+  .page-hero-inner { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; }
+  .eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accentl); display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--accentl); }
+  .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.03em; color: var(--white); margin-bottom: 16px; }
+  .page-hero p { color: #94a3b8; font-size: 1.05rem; line-height: 1.75; max-width: 520px; }
+  .about-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,.1); flex-shrink: 0; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; color: #475569; font-weight: 800; font-size: 1.5rem; }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+  /* BODY SECTIONS */
+  .section { padding: 80px 40px; }
+  .section-inner { max-width: 1040px; margin: 0 auto; }
+  .section-alt { background: var(--bg); }
+  .s-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .s-eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--accent); }
+  .s-title { font-size: 1.75rem; color: var(--ink); line-height: 1.2; margin-bottom: 20px; letter-spacing: -.02em; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p + p { margin-top: 16px; }
+
+  /* EXPERTISE TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .tag { background: var(--accentbg); border: 1px solid #bae6fd; color: #0369a1; border-radius: 20px; padding: 4px 13px; font-size: .78rem; font-weight: 600; }
+
+  /* FOCUS AREAS */
+  .focus-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .focus-item { border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; }
+  .focus-title { font-size: .9rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .focus-body { font-size: .845rem; color: var(--slate); line-height: 1.6; }
+
+  /* PERSONAL */
+  .personal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .personal-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 22px; }
+  .pc-icon { font-size: 1.4rem; margin-bottom: 10px; }
+  .pc-title { font-size: .9rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .pc-body { font-size: .845rem; color: var(--slate); line-height: 1.6; }
+
+  /* CTA */
+  .cta-band { background: var(--ink); padding: 72px 40px; text-align: center; }
+  .cta-band h2 { font-size: 1.9rem; color: var(--white); letter-spacing: -.02em; margin-bottom: 14px; }
+  .cta-band p { color: #94a3b8; font-size: 1rem; line-height: 1.7; max-width: 440px; margin: 0 auto 28px; }
+  .btn { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: .88rem; padding: 12px 22px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer; transition: all .15s; white-space: nowrap; }
+  .btn-accent { background: var(--accent); color: var(--white); }
+  .btn-accent:hover { background: var(--accentl); }
+
+  /* FOOTER */
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <ul>
+    <li><a href="about.html">About</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="mailto:rossjayp1@gmail.com" class="nav-cta">Work with Me</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="eyebrow">About Jay</div>
+      <h1>A Product Leader who has been there.</h1>
+      <p>Passionate about building products that solve real problems, with a track record across life sciences, healthcare, and beyond.</p>
+    </div>
+    <div class="about-photo">
+      <img src="hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner two-col">
+    <div>
+      <div class="s-eyebrow">Background</div>
+      <h2 class="s-title">Product Leader, Coach, Consultant, Advisor</h2>
+      <div class="prose">
+        <p>Hi, I am Jay and I am passionate about building products that solve real problems. I have been successful in launching and growing products in various markets with a focus in life sciences and healthcare.</p>
+        <p>Most of the products I have managed have been software products spanning on-premise and hosted systems, cloud-based multi-tenant systems, direct to consumer apps and platforms, and platform-based solutions ready to scale.</p>
+        <p>I have helped companies of all sizes organize their product and engineering teams, grow their products, and achieve success in the market. Most recently, I have spent my time helping healthcare startups establish their products in the market with multiple successful exits.</p>
+        <p>Currently consulting with and advising a few startups in stealth mode across a variety of industries.</p>
+      </div>
+      <div class="tags" id="tags"></div>
+    </div>
+    <div>
+      <div class="s-eyebrow">Where I Have Helped</div>
+      <div class="focus-grid" id="focusGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="s-eyebrow">Outside of Work</div>
+    <h2 class="s-title">When I am not working</h2>
+    <div class="personal-grid" id="personalGrid"></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>Let&#39;s work together</h2>
+  <p>Whether you need a strategic advisor, a coach, or a hands-on consultant, reach out and let&#39;s talk about what you are trying to accomplish.</p>
+  <a href="mailto:rossjayp1@gmail.com" class="btn btn-accent">Get in Touch</a>
+</section>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="about.html">About</a>
+    <a href="articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+var TAGS = ["Product Strategy","Healthcare IT","Life Sciences","FHIR / HL7","Team Building","Roadmapping","Coaching","Go-to-Market","Startups","Clinical Data"];
+
+var FOCUS = [
+  { title: "Biotech", body: "Launching and managing clinical trials and research products." },
+  { title: "Pharma & Manufacturing", body: "Quality control of products through testing and compliance." },
+  { title: "EHR / Physician Tools", body: "Helping physicians document and share medical records." },
+  { title: "Health Information Exchange", body: "Helping hospitals and payers share medical records securely." },
+  { title: "Claims & Payers", body: "Enabling payers to auto-adjudicate claims efficiently." },
+  { title: "MSK & Injury Recovery", body: "Products helping patients recover from MSK conditions and workplace injuries." }
+];
+
+var PERSONAL = [
+  { icon: "&#128247;", title: "Photography", body: "Capturing landscapes and light, from Arches at sunrise to the Sacramento Valley." },
+  { icon: "&#128663;", title: "Classic Cars", body: "Restoring classic cars the right way, one project at a time." },
+  { icon: "&#128296;", title: "Woodworking", body: "Building things by hand. There is something satisfying about working with real materials." }
+];
+
+document.getElementById("tags").innerHTML = TAGS.map(function(t) {
+  return "<span class=\"tag\">" + t + "</span>";
+}).join("");
+
+document.getElementById("focusGrid").innerHTML = FOCUS.map(function(f) {
+  return "<div class=\"focus-item\"><div class=\"focus-title\">" + f.title + "</div><div class=\"focus-body\">" + f.body + "</div></div>";
+}).join("");
+
+document.getElementById("personalGrid").innerHTML = PERSONAL.map(function(p) {
+  return "<div class=\"personal-card\"><div class=\"pc-icon\">" + p.icon + "</div><div class=\"pc-title\">" + p.title + "</div><div class=\"pc-body\">" + p.body + "</div></div>";
+}).join("");
+
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

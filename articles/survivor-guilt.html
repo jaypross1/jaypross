@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survivor Guilt After a Layoff – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/survivor_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Feb 8, 2024</span>
+    <span class="meta-tag">Career</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>Dealing with Survivor's Guilt and Imposter Syndrome After a Layoff</h1>
+
+  <div class="prose">
+
+    <p>I have seen a lot of articles written about people affected by a layoff and how to deal with feelings of grief and imposter syndrome, but not many that focus on those who remain after a layoff. While this article is tailored a bit more towards Product Managers, I believe it is applicable to almost anybody affected by a layoff and to people who are managing teams of people following a layoff.</p>
+
+    <p>With recent layoffs, you may find yourself as one of the few remaining Product Managers in your team, division, or even an entire company. You might suddenly be responsible for more products or for a much larger portion of a product than you have ever managed.</p>
+
+    <p>It is easy, and understandable, to have both survivor's guilt and suffer from imposter syndrome following a layoff. You likely had a lot of very experienced and successful colleagues and friends who were affected by layoffs. It is easy to think about how much work and good they did for the company and wonder why you still have a position. It is common to look at the new larger area of responsibility and question whether you are the right person to tackle it all (almost as if you are Atlas, bearing the weight of the company).</p>
+
+    <p>While each circumstance is different, here are a few things you can do to help you get through this process.</p>
+
+    <p>First, recognize that this is normal. These types of emotions and thoughts are normal. Grief over lost co-workers, feelings of inadequacy, and being overwhelmed in the face of such change are all part of the process of dealing with something like this. I advise that you accept the most common clich&#233; shared in bad times: &#8220;time heals all&#8221;. Accept that this is normal, that it is OK for you to both grieve and to be worried about the future, but quickly move on and focus on what is next.</p>
+
+    <p>I struggled with whether or not to make this the first item to tackle. In my opinion, nothing takes your mind off your troubles like rolling up your sleeves and just &#8220;Getting Schtuff Done (GSD)&#8221;. GSD is like chicken soup for my soul. I do believe this is even more important for Product Managers as it is not just you, but the entire product team that needs to continue the normal product apparatus of building and shipping new things. Start by familiarizing yourself with the new products or new product areas that you are now responsible for, and ensure that you understand the roadmap over the next 2 months or so.</p>
+
+    <p>Make sure both your engineers and your stakeholders know what is being worked on &#8220;next&#8221;. Don't go much further out than 2 months. The time after a layoff is a time to allow people to execute on already planned things, not a time to undertake large planning activities. You may need to trim things back a little to account for a smaller team, but hopefully there is enough defined to just have the team execute for about 2 months.</p>
+
+    <p>Next, you need to establish anything in the full repertoire of Product Management that you will not be able to do now that your team is smaller. If you still have a product team and product leaders, this should be a discussion with the entire team with the expectation that a revised role and responsibility list will be shared broadly with those teams engaged with Product. If you are on your own as a Product Manager, then have an open conversation with whomever your manager is about the things you can continue to do vs. discontinue doing. Oftentimes Product will focus mostly on execution following a layoff and will cut back on strategy, new product planning, and market research. This part is often hard for non-Product people to understand, so be prepared to make your case when you bring this to your leadership team and stakeholders. (Take a look at my article <a href="what-should-product-do.html">here</a> for some of my thoughts on how non-Product people think about &#8220;all the things&#8221; that the Product Team should do.)</p>
+
+    <p>There is a reason to do this &#8220;third&#8221;. First, it is because there will be chaos immediately following the layoff. Second, because you and every other PM will be very busy picking up all the half-completed work from the PMs no longer with the company and ensuring that your product development capacity is being used as effectively as possible. And third is because everybody needs time to let the layoff sink in. If this was the first thing you did, you might overreact and want to cut all but whatever you deem the most critical aspects of your job. Additionally, your stakeholders may get defensive and be more eager to challenge anything that they perceive to be &#8220;too deep of a cut&#8221;. Going back to the concept that &#8220;time heals all&#8221;, if you present this a month or so after the layoff, then you can argue that after reorganizing yourself and the product team around the new products and team size, you now understand what is possible and what is not, and therefore have facts to support your proposal.</p>
+
+    <p>Next, you need to become the subject matter expert on the aspects of the product(s) that are new to you. The complexity of the product will dictate how long this will take, but you should assume you have just enough time to get up to speed to start directly managing the backlog past the original two-month mark mentioned above, as well as to engage in any longer-term planning activities. If you do not do this quickly, you will either end up with a work stoppage as engineers run out of things to work on, or you will end up with a non-prioritized backlog that results in unimportant items being developed.</p>
+
+    <p>Finally, it is always a great idea to keep in touch with your former colleagues. Some will be more open to this than others, especially immediately after the layoff. Don't be afraid to connect with them on LinkedIn, message them with your support, and when needed reach out to them for information and advice. You will find that most of them won't hold the layoff against you and will want nothing more than for you to be successful. I keep in touch with a wide range of former colleagues. I just met with a colleague and a friend, and we both gasped when we realized we had not worked together in about a decade. You may find that your relationship with some of your former colleagues might actually be stronger as you move on to &#8220;alumni&#8221; status than it was when you were working together.</p>
+
+    <p>In short: hang in there; know the pain will ease; focus on what is next; adjust the scope of your job according to what is possible with your current resources; be your product's SME; and keep your former colleagues close over the years.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

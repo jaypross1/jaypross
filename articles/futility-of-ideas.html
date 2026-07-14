@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Futility of Ideas – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/futility_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">May 27, 2016</span>
+    <span class="meta-tag">Product Management</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>The Futility of Ideas</h1>
+
+  <div class="prose">
+
+    <p>My last post was about how product ideas are simply the tip of the iceberg, and explained how an idea goes from just an idea to a realized product. A good friend of mine provided me a new title for that post, &#8220;The futility of ideas&#8221;. That post was intended to provide insight for people who work with product management, are interested in product management, or those who are looking to hire a product manager. However, in hind sight (thanks to my friend) it does paint a dark picture on creativity and ideas in general. That was certainly not my intent, so I decided to write about ideas and how to inspire people to come up with them.</p>
+
+    <p>Let's face it, most ideas will never see the light of day. A good product manager is in a difficult position of managing limited resources and trying to prioritize the highest value items first. This means they could write a book on all the creative ways that they know how to say &#8220;no&#8221; to things. However, as a Product Manager you want people to come to you with their ideas, but you don't want to discourage them by having to always say no. Here are some methods that have worked for me to help keep people engaged and sharing their ideas.</p>
+
+    <h2>Ground Rules</h2>
+
+    <p>First and foremost, since so many ideas won't make it past the paper napkin phase it is best to set everybody up for success. This means setting some loose ground rules. Ideas should align to the overall mission of the company and the current vision that the company has. This maybe more difficult than you might think. People will reference companies like Google or Amazon, and comment about how building self-driving cars has nothing to do with search engines, or how empowering the industry transition to the cloud is only loosely related to selling things on the internet.</p>
+
+    <p>However, unlike Amazon or Google, most of the companies that I have worked with have had limited resources and cannot explore ideas outside of their mission. While it might be interesting to enter into a new business by leveraging something that you already do, trying to actually enter that business will take resources away from your primary mission. So, until you have the resources and the company backing to dive into a new business, keep your creativity focused on your existing mission.</p>
+
+    <h2>Alignment to the Plan</h2>
+
+    <p>Next, as a Product Manager you should have a well-documented and shared product plan. The plan should include your 3-5 year vision for the product and the roadmap to get there. You should encourage your colleagues to first try and focus their ideas on how to improve that plan. Typically that plan has been reviewed and approved by an executive team, and perhaps even the board. Making large changes is typically difficult at best. Of course you documented the plan with just enough ambiguity to allow you some wiggle room, but not enough to target a different market segment, or radically alter the product. So the guidance you provide here is to have your colleagues focus their creativity on enhancing the plan. You need to be flexible with this. Product Managers are only human, and perhaps your plan is flawed in some way. If somebody comes to you with a major change to the plan, don't reject it out of hand, perhaps it is something to consider.</p>
+
+    <h2>Keep the Barriers to a Minimum</h2>
+
+    <p>Let's face it, they outnumber us. There are far more people with ideas in an organization than there are Product Managers. Taking the time to talk to and listen to all of them can be overwhelming. Of course there will be crunch times where you just don't have the time to talk to people, but don't fool yourself, talking to colleauges, customers, and partners about ideas is a large part of a your job.</p>
+
+    <p>You may be tempted to build a lot of process around how ideas are submitted, how they are queued, when they are vetted, how much detail is required for an idea to be considered, etc&#8230; Things like this are disguised as a mechanism to improve the efficiency of the idea process, but in reality are a sanity tool for the product manager to ensure they are not inundated with idea management activities. Having been at organizations with processes at both ends of this spectrum, I am a big fan of keeping it really simple.</p>
+
+    <p>Block several timeslots on your calendar as open time, and let people know that you are free during those times to brainstorm ideas. Don't ask for any documentation up front, just let people come to you with their idea and have a chat about it. The point of this is to foster collaboration and initially review the idea, not to make a business decision. You don't want people to spend a lot of time and effort (valuable and limited company resources) planning and documenting an idea that may never move forward. In taking a page out of the Agile manifesto, in this area we would say that a Product Manager values &#8220;conversations and quick decisions over paperwork and process.&#8221;</p>
+
+    <p>Most Product Managers that I talk to get a look of fear and doubt in their eyes when I explain this part. Don't worry, the amount of time you will spend on this is not nearly as much as you think it will be. Additionally the positive side effects of these conversations will greatly outweigh the time you spend on them.</p>
+
+    <h2>Don't Be Negative</h2>
+
+    <p>The easiest way to kill creativity (and discourage people from coming up with ideas) is to be negative. I am not talking about having a bad attitude, I mean simply saying &#8220;no&#8221; is negative enough to shut a person down. So, when somebody comes to you with an idea you are going to do all the things you would do if you were hosting a creative session. First, you are going to listen and understand their idea. You won't criticize it, you won't lament about how this is the nth time somebody brought this same thing up. You are going to ask probing questions to make sure you both understand what the intent of the idea is, and what the value is to either your customers or your organization.</p>
+
+    <p>Be positive in any way you can about the idea. The person was passionate enough about the idea to come and talk to you about it, so even if the idea isn't a great one you can at least thank them for their time and effort on the idea and encourage them to continue to bring ideas to you.</p>
+
+    <h2>Let Them Down Easy and Explain Why</h2>
+
+    <p>Take the time to clearly explain why the idea cannot move forward. Be especially positive if it is a good idea that just cannot move forward for one reason or another (timing, cost, alignment, etc). Be sure to explain all the reasons why the item cannot move forward. This certainly does increase the amount of time that you have to spend with each person and idea, but keep in mind that it will pay dividends going forward. Each time you have a conversation like this, the person you are talking to has a little more insight into your way of thinking, and a better understanding about how things are prioritized.</p>
+
+    <p>In short, the more you spend time talking with people about their ideas now, the less time you will have to spend doing the same in the future.</p>
+
+    <p>The outcome of this open and informal ideation process, with some very loose rules controlling it, will be increased collaboration and creativity within your organization. Your colleagues will be part of the product development and planning process in a healthy and constructive way. By having discussions just like this you are further increasing communication about what the product priorities are (and why). Anything that you as a Product Manager can do to improve not only the quantity, but more importantly the quality of communication about your product and initiatives will help you keep your sanity and allow you to sleep better at night. I could write all about Product Managers and the need for over-communication, but that is another story.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

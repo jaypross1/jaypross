@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Does Your Product Compare? – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/compare_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Jul 8, 2016</span>
+    <span class="meta-tag">Product Marketing</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>How Does Your Product Compare?</h1>
+
+  <div class="prose">
+
+    <p>As a product manager, this is the last question that I hope any of my sales team is asked by a customer. This type of question can come in many forms such as:</p>
+
+    <ul>
+      <li>How does your company/product/feature compare to this other company/product/feature?</li>
+      <li>What do you think about X company/product/feature?</li>
+      <li>I heard that company/product/feature X does or is doing this&#8230; what do you think?</li>
+      <li>X company pricing is&#8230; why is yours higher (or lower)?</li>
+    </ul>
+
+    <p>From a pure sales perspective, these types of questions are deadly. Why? Because if you start talking about the competing product you are not talking about YOUR product. After your conversation with the potential customer, you want them to remember how they will be better off after they start using your product. You don't want them to remember how you compare to company X or their product.</p>
+
+    <p>Some of your competitors may have resorted to direct comparisons between themselves and you. Perhaps they just don't have enough good things to say about their product, so they are resorting to comparing to yours (consider yourself flattered). However, as a product manager, you should have armed your sales and marketing teams with so many talking points about the value of your product that they never have to resort to talking about competitors.</p>
+
+    <h2>How Do You Respond to These Type of Questions?</h2>
+
+    <p>Training your sales team is a lot like doing media training, or coaching somebody on public speaking. It can even be compared to debate training. The key thing for everybody to remember is to stay focused on your company/product/feature. You have a message to get across to your customer about why you are the best and your sales &amp; marketing team needs to stay focused on that. So questions about your competitors or their products should almost always be answered with something to the effect of:</p>
+
+    <blockquote>&#8220;I am not really sure what they are doing, let me tell you about how our product is so incredibly wonderful&#8230;&#8221;</blockquote>
+
+    <p>You have seen this time and time again in the recent political debates. The good speakers are great at answering the question with information about their position or them as a person without ever talking about their competitor. The bad speakers resort to focusing on the competitor, without ever addressing the question, or explaining why their position is best.</p>
+
+    <h2>Is It Ever a Good Idea to Directly Compare Between a Competitor?</h2>
+
+    <p>When you are downstream in the sales process with a customer who is switching off of a competing product, then during the later stages of the sales and implementation process it is OK to discuss discrete features as more of a training exercise or as a final decision making step. However, the goal is not a comparison. Your goal is to show them how they can accomplish the same thing using your product. To do that you need to have understanding of how the competing feature worked, and more importantly how your potential customer is using that feature.</p>
+
+    <h2>What Do You Need to Know About Your Competitors?</h2>
+
+    <p>Don't confuse the concept of not talking about your competitors with not knowing them. As a product manager you need to know everything about your key competitors that you can legally know. Their user base, their strategy, their product features, their pricing, etc. You (of course) use this information in developing your own product vision and strategy and to identify your points of differentiation. You have to know about your competitors in order to properly arm your sales and marketing team with the right talking points. A lot of your talking points about given features will be a reaction to something that a competitor is saying or has in their product.</p>
+
+    <p>So, scream from the mountain tops and proclaim all day about how great your product is, just don't give any free marketing to your competitors by talking about them.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

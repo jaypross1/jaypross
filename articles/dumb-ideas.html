@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dumb Ideas – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/dumb_ideas_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Feb 21, 2018</span>
+    <span class="meta-tag">Product Management</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>Dumb Ideas</h1>
+
+  <div class="prose">
+
+    <p>I have written in the past about how having great ideas does not make a product manager, and a follow-up on my recommendations for managing ideas. Both of those focused on how to either provide career guidance for budding Product Managers, or on how to manage an abundance of ideas with a light weight process. However, what happens if you have the opposite problem? What if you just aren't getting a lot of ideas? What if all of your ideas are coming from younger or newer employees, but the more senior employees are not offering any?</p>
+
+    <p>How do you engage your wider team to come up with ideas? More importantly, why are the new employees (and likely younger ones) so willing to offer ideas while so many of the existing employees are not?</p>
+
+    <p>My hunch (fueled by lots of anecdotal evidence) is that the existing employees have seen the outcome of their ideas and know that they just won't go anywhere, therefore they don't bother offering them. Second, I am betting that there isn't a structure or even a time frame for ideas to be shared. In my last blog about the futility of ideas, I was recommending open calendar slots for PM's to be open to listen to new ideas. That works well for new employees, but how do you engage the creative minds of the rest of your organization?</p>
+
+    <h2>The Dumb Idea Board</h2>
+
+    <p>Let's face it, if you have been working for any amount of time you will know that very few ideas ever see the light of day. This discourages you from wanting to share your ideas at all, especially if the process is cumbersome (even if it is just a conversation with a PM). One solution is the dumb idea board. As the image at the top indicates this can a be a physical or virtual board where people can place their ideas. Some of you might ask why the ideas are referred to as dumb, and question whether that would discourage people from sharing their ideas.</p>
+
+    <p>There are a couple of reasons for calling it a dumb idea board. First, most people think that on some level their idea is dumb. They assume it is too complicated, will not work in the market, or they just don't have the energy to defend it. Since it is dumb, they don't share it. Second, if the board is full of dumb ideas, then the bar is set really low for the quality of the idea which creates a safe incentive for people to share their &#8220;dumb&#8221; idea.</p>
+
+    <p>In order to make this type of board useful you need some ground rules around the board:</p>
+
+    <ul>
+      <li>They can be anonymous</li>
+      <li>They should be written positively (with the expectation that negative or inflammatory items will be promptly removed)</li>
+      <li>Nobody can counter-comment the idea (no negativity)</li>
+      <li>There is no structure, and no limit to the content. This one is important &#8211; ideas can be one-liners, or they can be full specifications or research (assuming the individual did the work on their own time).</li>
+      <li>You have to have time on the calendar to consider the ideas. Additionally, you need to celebrate when an idea is taken from the board to be executed. By celebrate I mean announce to the company where the idea came from and thank the person who contributed it.</li>
+    </ul>
+
+    <p>That last point is important. Most people think that their idea should be executed &#8220;now&#8221;. However, most organizations make commitments on an annual basis that is reported to shareholders and/or a board of directors. Changes that differ from those commitments usually cannot be incorporated unless they require very little effort. Therefore, the ideal times to consider ideas from the board are:</p>
+
+    <ul>
+      <li><strong>Release planning</strong> &#8211; When you are planning a new release of a product you canvas the dumb idea board for ideas related to the product or area of the product that you are planning the release for. Small items that align to the release &#8220;theme&#8221; are pulled in (and celebrated!)</li>
+      <li><strong>Strategic planning</strong> &#8211; When the organization is doing annual or quarterly planning the PM team should review the idea board. Items pulled into the plan are celebrated.</li>
+    </ul>
+
+    <p>It is recommended that you purge the idea board on a regular basis, usually after the strategic planning session. You may ask what you should do with all those ideas. The answer is nothing, just drop them in the round shaped file cabinet at the end of the desk, or unceremoniously click the delete button. If you want to discourage people from sharing their ideas, then present them with a list of ideas that never saw the light of day and ask them to add their idea to it. If you want to encourage PM's to avoid dealing with such a board, then ask them to review hundreds of ideas for each product release or as part of strategic planning.</p>
+
+    <p>Another side effect of leaving ideas &#8220;up&#8221; is that since the idea can be as simple as a one liner (or even a word), it can be misinterpreted. One person's interpretation of a one liner could be very different from another. If the one liner was not there, the person with their new idea may have written it a little differently and added it to the board. However, since they see an idea already there, they assume their dumb idea is just that, and they do not bother sharing it.</p>
+
+    <p>Don't confuse this internal idea board concept with an external customer facing idea board. Those are customer communication tools that are valuable to Customer Support, Customer Success, Product Marketing and Product Management alike. More importantly those ideas <em>do</em> persist for a variety of good reasons which I will save for a separate article.</p>
+
+    <hr>
+
+    <p>In the meantime, get your dumb idea board setup, and encourage people to contribute. Don't forget to seed it with a couple of really good dumb ideas of your own.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

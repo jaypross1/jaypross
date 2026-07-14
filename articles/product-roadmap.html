@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Roadmap – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/roadmap_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Jan 25, 2024</span>
+    <span class="meta-tag">Product Strategy</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>Product Roadmap: What Should We Do Next?</h1>
+
+  <div class="prose">
+
+    <p>As a product manager, one of the most consistent questions I receive from either peer product managers or executives is, &#8220;How do we decide what to build and bring to market next?&#8221;</p>
+
+    <p>This challenge is universal, affecting companies of all sizes and at all stages of growth. Whether you're a large company with multiple products in the market, most of which are doing reasonably well, or a startup that launched a product-led growth initiative with promising initial traction, common themes emerge when faced with this question. Typically, two key challenges are present: growth has likely slowed, prompting a need for improvement, and there's often no established process for deciding on the product backlog or roadmap.</p>
+
+    <p>In my experience, a combination of the following factors is typically true:</p>
+
+    <ol>
+      <li><strong>Strong Personality Influence:</strong> A dominant figure within the company, such as a charismatic founder with the original product idea, a strong technologist, or a visionary leader, has been making most decisions. The prioritization question arises when either the ideas from this leader cease or fail to achieve expected growth.</li>
+      <li><strong>Customer-Driven Direction:</strong> A major customer has heavily influenced product direction, shaping the roadmap for a considerable period. Once new clients come into the picture, there's a lack of a robust process for prioritizing ideas or requests, leading to a product with a market size limited to the initial influential customer.</li>
+      <li><strong>Design by Committee:</strong> Decision-making is spread across a group of senior leaders who determine the roadmap based on their opinions. This approach often lacks a structured process, resulting in priorities influenced by individual perceptions rather than a well-defined strategy, leading to potential misalignment with the company's growth objectives.</li>
+    </ol>
+
+    <p>Given the abundance of ideas, far exceeding the team's capacity to bring them to market, a process is attempted but is frequently undermined by the aforementioned factors, leading many to bypass it. Most companies have some form of a decision-making process, but it may vary across teams or divisions, be costly, burdensome, or so loose that it's easily avoided.</p>
+
+    <p>So, how do you decide? The best solution I've found involves a combination of strategies. First, establish a relatively simple process for submitting and evaluating product ideas that the product team can manage. This process should cover internal and external sources, encompassing both big ideas (e.g., entering new markets, expanding an existing market vertically or horizontally with significant features) and small ideas. You can find various models for this process <a href="https://theproductmanager.com/topics/feature-prioritization/" target="_blank" rel="noopener">here</a>.</p>
+
+    <p>If your company is new to this, I recommend adopting an Effort vs. Value method based on scoring from 1 to 5. The process should surface high-value items (the 5s) with low effort (the 1s). Given the likelihood of having more ideas than your organization can manage, the process should embrace a fail-fast mentality and be as cost-efficient as possible.</p>
+
+    <p>With this base prioritization process in place, create a cross-functional team (a product council) to review larger ideas during regular strategic planning cycles (quarterly or bi-annually). This group, often comprised of executive stakeholders, aims to eliminate unviable or low-value, high-cost items early in the process. All decisions made during this process should be documented and published for visibility.</p>
+
+    <p>Next, establish a stage-gate process to review bigger ideas with rough timeboxes, including at least two stages:</p>
+
+    <ol>
+      <li><strong>Initial Ideation:</strong> The idea is brought to the product team, and a discussion along with a paper napkin exercise occurs to determine value and cost. The time allocated varies based on the complexity of the idea. Small ideas can generally be fleshed out in 15 minutes, while larger ones may take a week of discussions and research.</li>
+      <li><strong>Expanded Research:</strong> This stage involves conversations with engineering, impacted departments/teams, and customer interviews to refine effort vs. value estimates. I typically timebox each round of research to 1&#8211;2 weeks.</li>
+    </ol>
+
+    <p>Agile companies may choose to proceed with two rounds and then authorize light experimentation (low-cost, minimum viable experimentation) before committing to broader development efforts. Ideas showing promise continue, while those that don't are canceled. Less agile companies, or those dealing with substantial ideas, may iterate through the second phase multiple times over several weeks before committing to an item or a complete roadmap.</p>
+
+    <p>The final component is governance and a method for deviating from the process. Tiebreakers may be necessary, typically handled by the CEO or founder, but the process should be clear. Flexibility is crucial, allowing for decisions based on immediate needs or the introduction of new ideas by the founder.</p>
+
+    <p>Finally, provide flexibility for both your product teams (product managers, product owners, designers, and engineers) and extended product teams (key stakeholders in customer success/operations, sales, marketing, and business development) to allocate time for small to medium-sized items a few times a year. Allow the product team to decide on smaller matters with minimal outside involvement, empowering them to respond to direct customer requests without extensive research or documentation.</p>
+
+    <hr>
+
+    <p>This is a concise overview of how I typically recommend structuring the initial product prioritization process when the existing process falls short of achieving goals. I can delve into specific aspects such as tracking ideas, documentation, conducting voting meetings, and other tasks that product managers need to undertake. If you're interested in further insights, drop a comment or <a href="mailto:rossjayp1@gmail.com">message me</a>, and I'd be happy to explore these topics (after a lightweight effort vs. value paper napkin exercise).</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>

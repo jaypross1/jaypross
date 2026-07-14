@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Should My Product Team Do? – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/product_do_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Feb 1, 2024</span>
+    <span class="meta-tag">Product Management</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>What Should My Product Team Do? (Or What Do "Real" Product Companies Do?)</h1>
+
+  <div class="prose">
+
+    <p>If you were to ask 15 people from 15 different companies the question &#8220;What is Product Management?&#8221; or &#8220;What does Product Management do at your company?&#8221;, I guarantee you will get at least 15 different answers. I often get this question when working with clients when something is going wrong, and they need help determining, of all the &#8220;things&#8221; the product management team &#8220;should&#8221; be doing, what is the most important thing to help achieve their goals. The reason I think this happens is because of how undefined the typical Product Management role is at many companies.</p>
+
+    <p>This lack of definition comes in part from the evolution of Product Management from a Marketing role in the 1930s to more of a Program Management role in the 60s &#8211; 80s, which evolved with the rise of software products and agile methodologies to what we know as &#8220;modern&#8221; Product Management today.</p>
+
+    <p>This change in Product Management over the last 90 or so years was not something that happened in a planned-out way; there were no real courses in the universities that explained what the role should be and what it should do. It emerged as companies experimented with different ideas and determined what worked best for them. I will make a sweeping generalization here and say that consumer staple products (like clothing, hygiene supplies, and food) continue to have Product Managers that reside in the Marketing department and most resemble the &#8220;Brand Men&#8221; concept from Procter &amp; Gamble in the 30s. B2B Manufacturing and companies tend to have Product Managers who are more like Program Managers, coordinating all the suppliers and logistics to bring the finished product to market. Then you have Product Managers working on software. This is where I find the most confusion about what a Product Manager does (or should do).</p>
+
+    <p>You can read more about the history of Product Management <a href="https://www.mindtheproduct.com/history-evolution-product-management/" target="_blank" rel="noopener">here</a>.</p>
+
+    <p>In the previous examples (Consumer products and B2B manufacturing), you have something in common: a physical product being manufactured, marketed, and sold; and a specific set of skills needed by your Product Manager to bring them to market. I am not saying either is easy, just that their skills and role in the company are typically well defined and fairly consistent company to company.</p>
+
+    <p>In software companies, the roles are often very undefined, and you can roll the dice to guess where the Product team reports within the organizational structure. I have seen all of the following:</p>
+
+    <ul>
+      <li><strong>IT (reporting to the CTO or CIO)</strong> &#8211; This can be a formal Product team responsible for Products or is just a handful of Product Managers working on projects. These PMs typically are asked to be more technical and focus a bit more on engineering engagement and product development and delivery.</li>
+      <li><strong>Marketing (reporting to the CMO)</strong> &#8211; This falls back on the more traditional role of Product Management and these PMs are typically more focused on market research, customer sentiment, product positioning, and product pricing.</li>
+      <li><strong>Operations (reporting to the COO)</strong> &#8211; I do see this less common, but when I do see it, the product team is focused mostly on feature delivery to satisfy customer requests that come through Sales, and Customer Success.</li>
+      <li><strong>A stand-alone Team (a CPO, reporting to the CEO)</strong> &#8211; While becoming more common, this is still quite rare outside the technology space. In this model, the PM is usually considered the General Manager of the products and has the widest set of responsibilities.</li>
+    </ul>
+
+    <p>This isn't even all the combinations I have seen; they are just the more common. I have seen things where Product Managers are in Marketing, Product Owners are in IT (but not part of the engineering team), and Program Managers in part of engineering, all in one company. I will be writing a separate article on different structures for product teams and what I think tends to work best. For now, let's just recognize the lack of standards for how companies approach Product Management and why it creates confusion about what the product team should be doing.</p>
+
+    <p>Going back to one of my first questions, if you ask a variety of people what a product does, then you will get some variation of the following things:</p>
+
+    <h2>Strategy</h2>
+    <ul>
+      <li>Market Knowledge</li>
+      <li>Competitive Knowledge</li>
+      <li>Regulatory Knowledge</li>
+      <li>Owning the P&amp;L or Growth Goals</li>
+      <li>Setting of Value Proposition</li>
+      <li>Being the Product Spokesperson</li>
+      <li>Setting the roadmap and goals</li>
+    </ul>
+
+    <h2>Marketing</h2>
+    <ul>
+      <li>Understanding the buyer and behavior</li>
+      <li>Segmenting the market and understanding growth areas/opportunities</li>
+      <li>Speaking to the press about the product</li>
+      <li>Writing use cases and white papers</li>
+      <li>Setting pricing</li>
+    </ul>
+
+    <h2>Managing a Live Product</h2>
+    <ul>
+      <li>Measuring utilization and growth</li>
+      <li>Optimizing user experience and performance</li>
+      <li>Responding to issues</li>
+      <li>Supporting the product's social/online presence</li>
+    </ul>
+
+    <h2>Customer Success</h2>
+    <ul>
+      <li>Publishing a customer centric roadmap</li>
+      <li>Creating training materials</li>
+      <li>Responding to customer requests</li>
+      <li>Establishing user groups</li>
+      <li>Presenting at customer conferences</li>
+    </ul>
+
+    <h2>Development</h2>
+    <ul>
+      <li>Maintaining the backlog</li>
+      <li>Coordinating SLDC ceremonies and routines</li>
+      <li>Dealing with conflict</li>
+      <li>Writing release notes</li>
+      <li>Managing product releases</li>
+    </ul>
+
+    <h2>Design and User Research</h2>
+    <ul>
+      <li>Surveying and interviewing customers on new ideas and customer satisfaction</li>
+      <li>Testing ideas with prototypes</li>
+      <li>Creating wireframes or even full UX mocks</li>
+      <li>Establishing consistency between products</li>
+    </ul>
+
+    <h2>For Leaders</h2>
+    <ul>
+      <li>Managing up to executives</li>
+      <li>Mentoring and coaching of PM's, Designers, and others</li>
+      <li>Resolving conflict</li>
+    </ul>
+
+    <p>Some of you would argue with me about whether or not the product is, or even should, be responsible for some of the items above. I would, depending on the circumstance, probably agree with you. If you have a strong business development and strategy team, then most of the items under strategy go to them. If you have a marketing team with product marketers then most of the stuff in marketing goes to them. If you have a capable customer success team, well, you get the idea.</p>
+
+    <p>However, when I am asked this question, it is not because the company has all those roles well defined and they have well-functioning teams in each role; it is when something is wrong. I had an old boss that used to say that &#8220;Success has many fathers, but failure is an orphan&#8221; (he actually used a less friendly word than orphan, but we will be PG for this article).</p>
+
+    <p>Regardless of what has gone wrong, when I am asked this question, it typically means that the company is not achieving their goals, and it is easy to focus on product-market fit and then look at any item in the above list and find deficiencies. In short, when a failure occurs because the product is not succeeding in the market, it is really easy to look at &#8220;all the things&#8221; that the product team could have or should have been doing and find areas for improvement (regardless of the actual team structure and areas of responsibility).</p>
+
+    <h2>If You Are an Executive and You Find Yourself or Your Company in This Situation, How Do You Resolve It?</h2>
+
+    <p>My typical advice when companies find themselves in this situation is to do a few things:</p>
+
+    <ol>
+      <li>Look at the Product Team you have, what you have historically asked them to do (and presumably hired for) and whether or not that is meeting your needs.</li>
+      <li>If your needs have changed (or you are realizing they need to change), then you can set a path forward to adjust the team according to your new needs.</li>
+      <li>If your needs have not changed, then you can just clarify with your leadership team what the roles and responsibilities are for the product team, and what they are not, and refocus your team on achieving the goals you have set instead of focusing on what the product team itself is or is not doing.</li>
+    </ol>
+
+    <p>Things are not always so cut and dry, so most often a blend of items 2 and 3 need to occur. You need to make some adjustments to your team, AND you need to reset expectations by clearly defining roles and responsibilities for your product team.</p>
+
+    <h2>If You Are a Product Leader, How Do You Avoid Getting Into This Situation or If You Find Yourself In It?</h2>
+
+    <p>When I work with product leaders, I encourage them to recognize that a large part of their job is expectation management. If you find yourself in a company with an undefined Product role here are some do's and don'ts.</p>
+
+    <p><strong>Do</strong> &#8212; Start documenting what your product team will or will not be doing on a per project basis. This should be part of your initial project kick off and the detail of it will depend on where the company is on the waterfall to agile spectrum.</p>
+
+    <p><strong>Don't</strong> &#8212; Worry about creating a roles and responsibility matrix (probably a RACI matrix) on all the roles and responsibilities listed above. Unless there is an agreement amongst the leadership team to both do this activity and hold people accountable to it, it will end up being a waste of time.</p>
+
+    <p><strong>Do</strong> &#8212; Communicate what you are and are not doing often and repeat yourself. When you hold product status update meetings or release readiness meetings or development previews make sure you repeat the goals of the work, and what you are working on and are not.</p>
+
+    <p><strong>Don't</strong> &#8212; Allow yourself to fall into the gotcha trap. Even if things are going well, somebody might ask &#8220;did you do X?&#8221;. If your documentation and your communications did not clearly state and repeat whether you were doing X then you will both feel and appear as you missed something. Somebody asking is not necessarily doing it to call out a gotcha. They are typically just thinking about how they believe something &#8220;should&#8221; be done and are asking about it. However, this approach is commonly used when something goes wrong and people want to point at things they believe &#8220;should&#8221; have been done to avoid the problem. So, when planning your work and the list of things you will be doing on a project and things you won't be, make sure you are detailed enough to avoid this trap.</p>
+
+    <p><strong>Do</strong> &#8212; Accept new inputs and adapt to change. You may have decided not to do some aspect of work, but you start to receive early indicators of failure in some way. Don't be afraid to change tactics or plans and add or remove things to the list of things you are doing vs. not doing. Just make sure you communicate the change. For example, you may have decided early on that you have a lot of user feedback and internal support for a given idea, so you skip user research or prototyping. You start developing and release a few iterations of a minimal product and it goes poorly. The prudent thing to do would be to introduce some light user research to understand the disconnect so you can correct.</p>
+
+    <p><strong>Don't</strong> &#8212; Spend too much effort defending why you chose not to do something. If somebody is incredibly passionate about something and feels you should have done it, and has the authority within the company to force the issue, then your best approach is to simply find what you can trade off.</p>
+
+    <p>In most instances, product management is a game of trade-offs. You are trying to get to market in a reasonable time and cost to achieve some goal.</p>
+
+    <p>Simply bring this person into the fold and explain why you made the choices you did, and ask their help to either reprioritize your work, or to get the added resources added to your project to do the &#8220;thing&#8221; the person wants.</p>
+
+    <p><strong>Do</strong> &#8212; Own your actual failures. This is the hardest one for me to write. Oftentimes when I see this big question, I see a company that does not manage failure well, meaning failure is not tolerated and those who admit failure usually don't last long at the company. I can write a whole article on this topic, maybe even a book. However, even in such a company, if something is clearly your fault, meaning you were supposed to do something, and you did not, and that caused a real problem, then you should be the first to bring it up and to have a plan for how to correct it. If you do not do this, and the issue comes to light, then it opens additional critics on all the things you specifically said you would not do, but people have expectations that the product &#8220;should&#8221; do.</p>
+
+    <p><strong>Don't</strong> &#8212; Don't accept the blame for all failure. In contrast to what is above, I know a lot of product managers that carry the full burden of success or failure on their shoulders. Look, wins or losses in a product are a team sport that relies on each department to do their part. I am not giving you license to play the blame game within your company. I am just telling you to not accept the blame yourself or your product team when it is not yours to accept. The definition of what the product &#8220;can&#8221; do is so wide; it is really easy to blame the product for just about anything. Don't accept the blame but instead focus on how to fix the issue even if it was not your fault or responsibility.</p>
+
+    <hr>
+
+    <p>OK, this is reaching the upper limit of my single article length. I touched on a LOT of topics here but tried to focus on how to define what your product teams should have responsibility for. Every company is different, with different strengths and weaknesses across departments, and what works well for one company may not work well at all for you.</p>
+
+    <p>If you would like me to write more about any of the topics above, then let me know. If I think it is in my roles and responsibilities, I will consider it! <a href="mailto:rossjayp1@gmail.com">Reach out</a> anytime.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>
