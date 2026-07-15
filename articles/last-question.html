@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Last Question – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/lastquestion_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Apr 16, 2024</span>
+    <span class="meta-tag">AI &amp; Product</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>The Last Question</h1>
+
+  <div class="prose">
+
+    <p>AI will impact your role in Product Management significantly in the next three to five years. If you spend most of your day managing information or managing execution related to product development then your job can be mostly replaced by automation and AI right now, and it will only get easier to adopt as time goes on.</p>
+
+    <p>When I began to write this article I initially started to further justify what I said in the second article, I, Robot, where I explained what is possible with AI. My goal was to convince you how real this is, and I realized a few things that are definitely true: AI will be embraced by companies and teams that have a need to cut costs (startups proving they can do things faster and cheaper than the incumbents, those struggling to grow or maintain customers, those just looking to improve their bottom line); larger companies in well-established markets or those where software is a small component of their products can choose to ignore this technology for as long as they wish.</p>
+
+    <p>So, if you spend your time mostly as an information manager, as a product manager for feature teams, or just focused on execution and you enjoy doing that, you can probably continue to do that for the foreseeable future with those second category of companies or teams. You may experience layoffs as some choose to invest in automation, but you will probably be able to find another job. If you want to be ready to take advantage of AI in this type of role then you can just train yourself on some of the automation tools and AI technology I referenced in the last article. You can enhance your skills to tackle more work and be more efficient than your peers while still mostly doing the same work you do today. There are a variety of courses available on these topics. I encourage you to Google: &#8220;Prompt engineering for Product Managers&#8221; and you will find a myriad of companies and people offering training on the topic.</p>
+
+    <p>Rather than trying to convince that group of people of the opportunity that exists for the future of Product Management, I decided to focus the rest of this article on those of you who will choose to work for the first type of company or team. You will be the leaders that will, eventually, force the second types of companies out of existence.</p>
+
+    <p>When I started on this series about a month ago, I intended to stay focused on how AI will affect Product Managers. As I had discussions with people and did more research, I came to realize that it is possible for AI to impact just about all white collar jobs. I think it may be possible for all administrative work done within a company to be replaced leaving just a lean team all focused on development and growth. Here is my partial vision for a next generation software product company:</p>
+
+    <ul>
+      <li>All FP&amp;A activities are automated.</li>
+      <li>HR and IT are fully outsourced.</li>
+      <li>Research once spread across strategy, corporate development, marketing, product, or design are all consolidated into one team, mostly powered by AI.</li>
+      <li>Most things related to product development management is automated.</li>
+      <li>Some of the design and development is handled by AI.</li>
+      <li>Routine customer success and marketing activities are automated.</li>
+    </ul>
+
+    <p>What is left is a fairly lean team with a small number of executives leading strategy, product, engineering, sales and customer success. The obvious opportunity would be to set up companies that offer the exact same products as incumbent players at a fraction of the cost (simply building a mostly automated better mouse trap). The bigger opportunity is in how such a structure will impact how we solve problems and how quickly we are able to do so.</p>
+
+    <p>The biggest hurdles to successful product management and overall business success are age old challenges of how to manage capital while you demonstrate product market fit and manage growth. In an agile sense the question is how many ideas can you test in how many markets until you determine what works best. Many products have failed right as they found the right solution in the market, but ran out of capital to pursue it. With this new type of company or team the number of ideas you can test in the market has grown exponentially. You have the ability to very cheaply test even the dumbest of ideas.</p>
+
+    <p>This will spark a new renaissance of products hitting the markets in the next few years as the barrier to entry (the capital costs) are reduced. Don't get me wrong, this will create a lot of garbage products in the market. For those Product Managers who are able to see problems and devise real solutions to those problems you will have the ability to actually bring those solutions to market. This opens a world where smaller problems are suddenly worth solving. Nobody would raise 10M in capital to solve a 200K a year problem, but what if you can spin up a team that can solve 20 such problems?</p>
+
+    <p>The types of skills you need in this new type of company are quite a bit different than today's Product Managers. Visionary leaders who are not afraid to test a lot of new ideas will be needed in this new world. If you want to be part of this new type of company you need to do the following:</p>
+
+    <ul>
+      <li>Educate yourself on the tools available in the market (some of which I reference in the previous article). I don't care how you do it &#8211; try them out, take a class, read about it.</li>
+      <li>Transition your thinking away from market/product research and cost/capital management mindset to a product testing and iteration one.</li>
+      <li>Where you can, apply what you learn and your new thinking to your current teams.</li>
+      <li>Dust off your list of dumb ideas and every problem you wish you had time to solve (whether they are part of your current company or your own list) and get ready to GSD.</li>
+    </ul>
+
+    <p>I hope you enjoyed this series as much as I did researching and writing it. There are so many topics that branch out from this. I have article ideas that could last a few years. Here are a few I am thinking about:</p>
+
+    <ul>
+      <li>Agile companies vs. Traditional (or is Agile really dead?)</li>
+      <li>Product Owner: a title or a responsibility?</li>
+      <li>A true how-to guide on building this company of the future</li>
+    </ul>
+
+    <hr>
+
+    <p>Want to learn more? Want to engage directly with me? I offer both group and private training and mentoring sessions that deep dive on all these topics. <a href="mailto:rossjayp1@gmail.com">Reach out</a> to find out more.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>
