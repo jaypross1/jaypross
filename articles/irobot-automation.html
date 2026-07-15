@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I, Robot – How AI Will Automate Away Product Jobs – Jay Ross</title>
+<style>
+  :root {
+    --ink:     #0f172a;
+    --ink2:    #1e293b;
+    --slate:   #475569;
+    --muted:   #94a3b8;
+    --border:  #e2e8f0;
+    --bg:      #f8fafc;
+    --white:   #ffffff;
+    --accent:  #0ea5e9;
+    --accentl: #38bdf8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+  nav { position: sticky; top: 0; z-index: 100; height: 64px; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+  .logo-text { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .logo-sub { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+  nav ul { list-style: none; display: flex; align-items: center; gap: 4px; }
+  nav ul a { font-size: .83rem; font-weight: 500; color: var(--slate); text-decoration: none; padding: 6px 13px; border-radius: 6px; transition: background .15s, color .15s; }
+  nav ul a:hover { background: var(--bg); color: var(--ink); }
+  .nav-cta { background: var(--ink) !important; color: var(--white) !important; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--ink2) !important; }
+  .nav-back { font-size: .82rem; color: var(--slate); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color .15s; }
+  .nav-back:hover { color: var(--ink); }
+  .article-hero { width: 100%; height: 400px; overflow: hidden; background: var(--ink2); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .article-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 56px 24px 100px; }
+  .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .meta-date { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .meta-tag { font-size: .72rem; background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; border-radius: 12px; padding: 3px 11px; font-weight: 600; }
+  .meta-author { font-size: .72rem; color: var(--muted); }
+  h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1.15; letter-spacing: -.025em; color: var(--ink); margin-bottom: 32px; }
+  .prose { color: var(--slate); font-size: 1rem; line-height: 1.85; }
+  .prose p { margin-bottom: 22px; }
+  .prose h2 { font-size: 1.35rem; color: var(--ink); margin: 40px 0 14px; letter-spacing: -.015em; font-weight: 700; }
+  .prose h3 { font-size: 1.1rem; color: var(--ink); margin: 28px 0 10px; font-weight: 700; }
+  .prose ul, .prose ol { margin: 0 0 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .prose li { font-size: 1rem; line-height: 1.75; }
+  .prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .prose img { width: 100%; border-radius: 10px; margin: 28px 0; }
+  .prose blockquote { border-left: 3px solid var(--accent); padding: 12px 20px; margin: 28px 0; background: #f0f9ff; border-radius: 0 8px 8px 0; color: var(--ink2); font-style: italic; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+  .author-bio { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+  .bio-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: var(--white); font-weight: 800; font-size: .95rem; flex-shrink: 0; overflow: hidden; }
+  .bio-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .bio-name { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+  .bio-desc { font-size: .83rem; color: var(--slate); line-height: 1.5; }
+  .back-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 48px; color: var(--accent); font-size: .85rem; font-weight: 700; text-decoration: none; transition: gap .15s; }
+  .back-link:hover { gap: 11px; }
+  footer { background: #020617; border-top: 1px solid #0f172a; padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fl { font-size: .82rem; font-weight: 700; color: #334155; }
+  .fc { font-size: .73rem; color: #1e293b; }
+  .flinks { display: flex; gap: 20px; }
+  .flinks a { font-size: .73rem; color: #334155; text-decoration: none; transition: color .15s; }
+  .flinks a:hover { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-mark">JR</div>
+    <div>
+      <div class="logo-text">Jay Ross</div>
+      <div class="logo-sub">Wyze Product, LLC.</div>
+    </div>
+  </a>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
+
+<div class="article-hero">
+  <img src="https://jaypross1.github.io/jaypross/articles/irobot_hero.jpg" alt="" onerror="this.parentElement.innerHTML='&#128196;'">
+</div>
+
+<div class="article-wrap">
+
+  <div class="article-meta">
+    <span class="meta-date">Mar 26, 2024</span>
+    <span class="meta-tag">AI &amp; Product</span>
+    <span class="meta-author">by Jay Ross</span>
+  </div>
+
+  <h1>I, Robot: How AI Will Automate Away Lots of Product Development Jobs</h1>
+
+  <div class="prose">
+
+    <p>In my last article, Foundation, I explained how and why people with certain titles are at risk of being at least partially replaced by AI in the near future. If you watched the video version, I alluded to the fact that a lot of white collar positions are going to be impacted by AI. Mark Cuban was in an interview recently where he was claiming that AI will even replace lower level engineers. This certainly makes for a scary future for a lot of us, if it is true. In this article we will explore what is possible today with AI.</p>
+
+    <p>If you have not read my prior articles, here is a quick summary: If you work in software product development in a role with a title that includes any of the following words in your title then you are at risk of significant change due to AI: Product, Program, Project, Analyst, Analytics, Informatics, Research, Strategy, and Design. Here are a few other warnings that your role might be able to be replaced by AI: you find that most of your day-to-day work involves moving data around (you are an information manager); you have Product or Program in your title and your company has Product Managers, Program Managers, Product Owners, and Scrum Masters all at the same company; you work on a feature team.</p>
+
+    <h2>Not All Robots Are the Same</h2>
+
+    <p>When most people hear the term &#8220;AI&#8221; they probably think more about Skynet and Terminators than individual software products that perform a single function. For the sake of this article, when I refer to AI I am including a broad suite of software tools that automate jobs usually done by humans. I am not going to lecture you on all things AI, nor will I dive into the theory of AI. You can Google around and find a million articles about Artificial Narrow AI vs. General AI vs. Super AI. Go nerd out on that stuff if you like. I am going to keep this article focused on practical applications of AI that can affect Product Managers. I will focus on two types of AI: Robotic Process Automation and those based upon Machine Learning.</p>
+
+    <h2>Robotic Process Automation (RPA)</h2>
+
+    <p>This is &#8220;teaching&#8221; a robot how to do a repetitive task. For old school people, you can think of this as a macro in MS Word or Excel that moves data around, or even Applescript that enables you to create a script that pretends to be a user and open apps and click buttons. In general, you teach these tools by recording your steps and filling in some details for the machine.</p>
+
+    <p>Modern versions of these tools use a mix of API's, screen scraping, and machine learning to make them easier to &#8220;train&#8221;. For example, old versions required you to &#8220;tell&#8221; the system every single step to take. Newer systems are powered with a library of millions of records and pre-trained on commonly used systems. While companies may call these products AI, they are more like the assembly robot in a factory. They are trained to do a task over and over.</p>
+
+    <p>If you find that most of your day is moving data around, these are tools that are going to replace that part of your job. Try one of them out today. Zapier is free for most of its core integrations. For example: you can have it automatically move leads from Hubspot to Salesforce (cause the cool kids use Hubspot, or anything other than Salesforce, and the old blokes are stuck on the backwards Salesforce system). It can be more complex where it takes data from one system, passes it through an AI to convert it, and then it places the output into a new system.</p>
+
+    <p><em>Sidenote: I don't own stock in any of these companies, I am just referring to tools that I have directly used (or in the case of Salesforce have been forced to directly use).</em></p>
+
+    <h2>Machine Learning (ML)</h2>
+
+    <p>This is where you use datasets to train a software program to infer &#8220;things&#8221;. For example, you might have the software look at millions of images of people at a park, some with dogs and some without. Each image is tagged with whether or not there are dogs in them. After reviewing those images you have &#8220;taught&#8221; the software how to identify a dog. This type of AI enables a machine to do things like this: infer sentiment in facial expressions and body language, voice, and writing; identify patterns and possible causality and enable predictions (like determining who is most at risk for a car accident, or who might end up at the hospital in the next nine months with a heart attack).</p>
+
+    <p>Tools that use machine learning are almost always purpose built. Their accuracy is limited to the quality and quantity of the data they were &#8220;trained&#8221; on. Take the dog picture example, if a lot of the images were tagged wrong then the machine would have learned that some images had dogs when there weren't any or visa-versa. This would lead to decreased accuracy. This is sometimes referred to as hallucinations or ghosts. The machine &#8220;sees&#8221; something that is not there because its training was faulty and they have enough data to &#8220;prove&#8221; (at least to itself) that there is a dog in a picture that clearly does not have one. There are variations of machine learning and whole subsections dedicated to deep learning, neural networks, and speech vs. text vs. vision. While these are really interesting to read about, we don't need to understand more about them for this article. We just need to recognize what they can do, and how they can affect our day-to-day jobs.</p>
+
+    <p>This category is where things like Google's Bard, Open AI's Chat GPT, and Microsoft's Copilot exist. They have been specifically trained to mimic human conversations and are able to leverage large amounts of data scoured from the internet and other sources so their answers are relevant. If you have been living under a rock for the past few years and have not tried any of these then stop reading and go spend an hour or two doing just that. Ask Chat GPT to plan a three day trip for you to just about anywhere in the world, then argue with it on some of the details and be amazed at how well it can pretend to be a travel agent. Better yet, feed it 30 user stories from your backlog and ask it to group them by theme or epic and sit slack-jawed when it does it slightly better than you would have.</p>
+
+    <h2>How Can I Really Use AI in My Day-to-Day Job in Product?</h2>
+
+    <p>Let's look at some examples of common activities in the Product life cycle and how they can be changed with AI today. I like to start at the beginning, so here is a market and product research example &#8211; imagine the normal flow of doing this type of research. You assign a person or team to review information in the market and report on it. You will want common data like the overall market size, trends, key competitors, the latest magic quadrant from Gartner, and unsolved problems being faced by the market. For product research, you may want to get a list of common product features from competitors and their individual market size and growth, as well as direct information from potential users of your product (user research). They may buy a report from an external agency or just review common internet sources for the information (LinkedIn, Crunchbase, government sources, etc.).</p>
+
+    <p>Want to survey some real users? Want to interview a few SME's in the market? Normally you might ask a user research team to craft all your questions so you don't inadvertently skew your results. You put in your request to them, you explain what you are trying to accomplish, they assign a team of researchers, and within a couple of weeks you have your &#8220;approved&#8221; interview and survey questions. Then the user research team schedules, performs, then compiles the interview results. You work with your Marketing team to set the surveys and your text and/or email campaigns to the target survey recipients.</p>
+
+    <p>How can we use AI to streamline this? The analyst still does a lot of the research, but they start by prompting a Chat AI to point them in the right direction. Then they feed the data to the AI and prompt it correctly to have it create the reports you need. Here is the new flow:</p>
+
+    <ol>
+      <li>Go to your Chat based AI and ask it to give you a list of sources for your market (2 mins).</li>
+      <li>Use that list to find articles freely available on the internet (maybe an hour of searching and retrieving)</li>
+      <li>Tell your Chat AI that you are about to feed it a bunch of new articles and you explain to it that you want a &#8220;Gartner&#8221; style report that summarizes everything from the source material (about 15 minutes).</li>
+      <li>Upload/copy all the source material you found into the chat AI (about 15 minutes).</li>
+      <li>You review the first pass of the report and either: (a) tweak the prompt you gave the AI in step three to better tease out what you are looking for; (b) fetch additional information and repeat step 4; (c) move to step 6.</li>
+      <li>You ask your AI to create survey and interview questions.</li>
+      <li>You approve those questions and an AI auto creates your survey and email campaigns for them.</li>
+      <li>You schedule and conduct the interviews.</li>
+      <li>AI listens to the phone calls and captures the questions, answers, and sentiment and stores it all in Google Sheets (Lookup Open.AI's Whisper product, or AssemblyAI's Sentiment API, or AWS comprehend).</li>
+      <li>A separate AI compiles the interviews and survey results into a single report for your review.</li>
+      <li>You review the survey results and approve them.</li>
+      <li>The AI updates the original research reports.</li>
+      <li>You send the report to the requester to make their decisions.</li>
+    </ol>
+
+    <p>If this was more of a feature request where you might review real user or product data then you would simply supply that raw data to one of the AI's to look for trends or tease out metrics, removing any dependencies on an analytics or informatics team. With a Chat AI and some RPA robots you can consolidate this work from 4-5 teams of people to just 1-2 teams. Heck, you might be able to even reduce the team size down to a single person.</p>
+
+    <p>This is why I say your job is at risk if you have research or analyst in your title. Tasks that typically take weeks of coordination and actual work can be handled in seconds by a modern AI. Most of the work shifts from producing work to prompting or setting up an AI to do the work, then reviewing, editing, and approving the work.</p>
+
+    <h2>Product Development Example</h2>
+
+    <p>How about Product Development? Let's look at feature prioritization. At a minimum, you may do a simple value vs. cost/effort calculation to do a first pass of prioritizing a list. You can start by feeding your entire list of features to a Chat AI and asking it to score each item on whatever scoring mechanism you use and you will have your first pass list done in seconds. You can even merge a customer idea list with your backlog and have the AI identify all possible duplicates and tease out themes or epics. How about taking something simple like a bug from your customer ticket system, and moving it to your development backlog? You start with an RPA robot that copies the items from one system to the other, AND you have the same robot pass each item through your Chat AI to convert into the format your development team prefers. The Chat AI reads sentiment and sets the priority accordingly.</p>
+
+    <p>You might think that setting something like this up would be a big undertaking and the licensing costs for each RPA bot or Chat interaction would be significant. Surprisingly, they are reasonably priced, and you can get them up and running in just minutes. Don't take my word for it, go sign up for a free account with some of the tools I mentioned above (Hubspot, Google, Zapier, MailChimp, Survey Monkey) and you could have several workflows setup and synced within about an hour, maybe two.</p>
+
+    <p>To be fair, fully automating the entire flow described above would currently require some light development to send data to API's and to funnel the data around. That will evolve over the next few years as new products come to market and existing ones get enhanced and integrated with various solutions. For example: to accomplish things like getting the sentiment of a user from voice tone you would likely have to capture the audio file and upload it to a website, then download the output of that, and upload it to your other AI to compile the data with your survey results.</p>
+
+    <p>These are the things that AI can do fairly easily today. These solutions are fairly low-cost to acquire, implement, and operate. Product teams with lots of redundancy and layers (and frankly, waste) are ripe for replacement by these tools. Companies with Product Managers, Product Owners, Program Managers, and Project Managers can consider consolidating those roles down to one.<sup>*</sup> Teams of user researchers and strategists can be replaced with a single person who knows how to properly prompt an AI to answer all their questions.</p>
+
+    <p><em><sup>*</sup>A side note, you may notice that I am not fond of having all these roles at a single company, getting into a full blown argument about these roles and whether they're full time jobs or a small component of somebody's job (nope, there is no bias here) is outside the scope of this series of articles. In my experience, companies with all these roles tend to be more dysfunctional and have a lot more redundancies than those that do not.</em></p>
+
+    <p>OK, I have probably properly scared you. In the next article (The Last Question) I will tell you why all of this is a good thing. More importantly, I will tell you what you need to do to take full advantage of this to accelerate your career and to transform how you &#8220;do&#8221; product at your company.</p>
+
+    <hr>
+
+    <p>Want to learn more? Want to engage directly with me? I offer both group and private training and mentoring sessions that deep dive on all these topics. <a href="mailto:rossjayp1@gmail.com">Reach out</a> to find out more.</p>
+
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">
+      <img src="../hero.jpg" alt="Jay Ross" onerror="this.parentElement.textContent='JR'">
+    </div>
+    <div>
+      <div class="bio-name">Jay Ross</div>
+      <div class="bio-desc">Product Leader, Coach, Consultant, Advisor &#183; Wyze Product, LLC.</div>
+    </div>
+  </div>
+
+  <a href="../articles.html" class="back-link">&#8592; Back to all articles</a>
+</div>
+
+<footer>
+  <span class="fl">Jay Ross &#183; Wyze Product, LLC.</span>
+  <span class="fc" id="footerCopy"></span>
+  <div class="flinks">
+    <a href="../about.html">About</a>
+    <a href="../articles.html">Articles</a>
+    <a href="https://www.linkedin.com/in/jaypross" target="_blank">LinkedIn</a>
+    <a href="mailto:rossjayp1@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footerCopy").textContent = "© " + new Date().getFullYear() + " Wyze Product, LLC. All rights reserved.";
+</script>
+</body>
+</html>
